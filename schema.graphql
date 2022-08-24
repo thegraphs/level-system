@@ -1,6 +1,7 @@
-type ExampleEntity @entity {
+type LevelAndShadeEntity @entity {
   id: ID!
-  count: BigInt!
   collection: Bytes! # address
   tokenId: BigInt! # uint256
+  shade: BigInt
+  level: BigInt
 }

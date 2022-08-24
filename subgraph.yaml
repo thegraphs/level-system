@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.4
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,34 +8,21 @@ dataSources:
     source:
       address: "0xF77D58aAB7e0660E0cb845320167155b9E22F17c"
       abi: Level
+      startBlock: 41431991
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - Gained
-        - Initialized
-        - Leveled
-        - RoleAdminChanged
-        - RoleGranted
-        - RoleRevoked
-        - Spended
+        - LevelAndShadeEntity
       abis:
         - name: Level
           file: ./abis/Level.json
       eventHandlers:
         - event: Gained(indexed address,indexed uint256,uint256)
           handler: handleGained
-        - event: Initialized(uint8)
-          handler: handleInitialized
         - event: Leveled(indexed address,indexed uint256,uint256)
           handler: handleLeveled
-        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
-          handler: handleRoleAdminChanged
-        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleGranted
-        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleRevoked
         - event: Spended(indexed address,indexed uint256,uint256)
           handler: handleSpended
       file: ./src/level.ts
